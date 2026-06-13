@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
     xfonts-75dpi \
     xfonts-100dpi \
     wget \
+    openssh-client \
     iputils-ping \
     gnupg \
     feh \
