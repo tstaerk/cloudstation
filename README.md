@@ -23,6 +23,9 @@ This repository allows you to export a Linux container's graphical desktop envir
 - `The Bastion Host`: It acts as a secure gateway aka jump server to reach private databases or internal APIs shielded from the public internet.
 - `Geo-Flexibility`: Need US-only rental car rates while sitting in Europe? Spin up your container in us-central1 and you're a local.
 - `Sharing is caring`: Want to show your colleague how to solve a problem? Just invite them to your Linux desktop and let them look over your shoulder. And even take over keyboard and mouse!
+
+## Bastion Host
+To use your container environment as a bastion host aka jump server, I recommend you use Direct VPC Egress. When your service is running, click on it -> Edit and Deploy new revision -> Networking -> Connect to a VPC for outbount traffic -> Send traffic directly to a VPC. Afterwards, you can set the respective firewall rules. Then, you will be able to ping the VMs in your project's VPC!!!
    
 ## Files
 - `Dockerfile`: Sets up Ubuntu, XFCE, noVNC, and Chrome.
