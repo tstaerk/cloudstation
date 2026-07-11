@@ -8,12 +8,10 @@ ENV PORT=8080
 
 RUN apt-get update && apt-get install -y \
     mate-desktop-environment-core \
-    mate-terminal \
-    caja \
-    mate-control-center \
     tigervnc-standalone-server \
     novnc \
     websockify \
+    dbus \
     dbus-x11 \
     x11-xserver-utils \
     xauth \
@@ -21,35 +19,50 @@ RUN apt-get update && apt-get install -y \
     xfonts-75dpi \
     xfonts-100dpi \
     wget \
+    curl \
     openssh-client \
     iputils-ping \
     gnupg \
     feh \
+    procps \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-# Install Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg \
-    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
+#
+# Install Google Chrome
+#
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub \
+ | gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg \
+ && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
+ > /etc/apt/sources.list.d/google-chrome.list \
+ && apt-get update \
+ && apt-get install -y google-chrome-stable \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-# Wrap Chrome to run as root
-RUN echo '#!/bin/bash\n/usr/bin/google-chrome-stable --no-sandbox "$@"' > /usr/local/bin/google-chrome \
-    && chmod +x /usr/local/bin/google-chrome
+#
+# Chrome wrapper (Chrome läuft als root im Container)
+#
+RUN printf '#!/bin/bash\nexec /usr/bin/google-chrome-stable --no-sandbox "$@"\n' \
+ > /usr/local/bin/google-chrome \
+ && chmod +x /usr/local/bin/google-chrome
 
+#
+# VNC
+#
 RUN mkdir -p /root/.vnc
+
+#
+# Scripts
+#
 RUN mkdir -p /opt/scripts
-RUN mkdir -p /root/.config/xfce4/xfconf/xfce-perchannel-xml
 
 COPY xstartup /root/.vnc/xstartup
 COPY start.sh /opt/scripts/start.sh
 COPY prieros.jpg /usr/share/backgrounds/prieros.jpg
-COPY xfce4-desktop.xml /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
-RUN chmod +x /root/.vnc/xstartup
-RUN chmod +x /opt/scripts/start.sh
+RUN chmod +x /root/.vnc/xstartup \
+ && chmod +x /opt/scripts/start.sh
 
 EXPOSE 8080
 
