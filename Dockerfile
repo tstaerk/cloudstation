@@ -7,10 +7,10 @@ ENV VNC_COL_DEPTH=24
 ENV PORT=8080
 
 RUN apt-get update && apt-get install -y \
-    xfce4 \
-    xfce4-session \
-    xterm \
-    xfce4-goodies \
+    mate-desktop-environment-core \
+    mate-terminal \
+    caja \
+    mate-control-center \
     tigervnc-standalone-server \
     novnc \
     websockify \
