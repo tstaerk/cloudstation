@@ -4,5 +4,19 @@ unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
 
 export DISPLAY=:1
+export NO_AT_BRIDGE=1
 
-exec dbus-run-session -- mate-session
+exec dbus-run-session -- bash -c '
+  mate-session &
+  session_pid=$!
+
+  # mate-session does not reliably launch Caja in a headless container.
+  for _ in $(seq 1 30); do
+    pgrep -x marco >/dev/null && break
+    kill -0 "$session_pid" 2>/dev/null || exit 1
+    sleep 1
+  done
+  caja --no-default-window --force-desktop &
+
+  wait "$session_pid"
+'

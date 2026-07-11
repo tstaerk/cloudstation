@@ -60,9 +60,11 @@ RUN mkdir -p /opt/scripts
 COPY xstartup /root/.vnc/xstartup
 COPY start.sh /opt/scripts/start.sh
 COPY prieros.jpg /usr/share/backgrounds/prieros.jpg
+COPY chrome.desktop terminal.desktop /root/Desktop/
 
 RUN chmod +x /root/.vnc/xstartup \
- && chmod +x /opt/scripts/start.sh
+ && chmod +x /opt/scripts/start.sh \
+ && chmod +x /root/Desktop/chrome.desktop /root/Desktop/terminal.desktop
 
 EXPOSE 8080
 
