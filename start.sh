@@ -26,6 +26,7 @@ fi
 echo "=== STARTING Xvnc ==="
 # Start Xvnc directly without password
 Xvnc :1 \
+  -desktop "CloudStation" \
   -auth /root/.Xauthority \
   -geometry $VNC_RESOLUTION \
   -depth $VNC_COL_DEPTH \
