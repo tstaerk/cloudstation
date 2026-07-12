@@ -67,6 +67,7 @@ COPY xstartup /root/.vnc/xstartup
 COPY start.sh /opt/scripts/start.sh
 COPY prieros.jpg /usr/share/backgrounds/prieros.jpg
 COPY cloudstation-background.png /usr/share/backgrounds/
+COPY cloudstation-wallpaper.png /usr/share/backgrounds/
 COPY chrome.desktop terminal.desktop /root/Desktop/
 
 RUN chmod +x /root/.vnc/xstartup \
