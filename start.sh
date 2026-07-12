@@ -60,7 +60,7 @@ gsettings set org.mate.session required-components-list \
   "['windowmanager', 'panel', 'filemanager']"
 gsettings set org.mate.panel default-layout 'default'
 gsettings set org.mate.background picture-filename \
-  '/usr/share/backgrounds/prieros.jpg'
+  '/usr/share/backgrounds/cloudstation-wallpaper.png'
 gsettings set org.mate.background picture-options 'zoom'
 gsettings set org.mate.Marco.general compositing-manager false
 # Run xstartup script manually
