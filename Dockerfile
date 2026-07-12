@@ -8,6 +8,11 @@ ENV PORT=8080
 
 RUN apt-get update && apt-get install -y \
     mate-desktop-environment-core \
+    mate-applets \
+    mate-indicator-applet \
+    mate-applet-brisk-menu \
+    caja \
+    mate-terminal \
     tigervnc-standalone-server \
     novnc \
     websockify \
