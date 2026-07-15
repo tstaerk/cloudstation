@@ -29,9 +29,9 @@ This repository allows you to export a Linux container's graphical desktop envir
 To use your container environment as a bastion host aka jump server, I recommend you use Direct VPC Egress. When your service is running, click on it -> Edit and Deploy new revision -> Networking -> Connect to a VPC for outbount traffic -> Send traffic directly to a VPC. Afterwards, you can set the respective firewall rules. Then, you will be able to ping the VMs in your project's VPC!!!
    
 ## Files
-- `Dockerfile`: Sets up Ubuntu, XFCE, noVNC, and Chrome.
-- `start.sh`: Entrypoint script to start Xvnc, XFCE, and the noVNC proxy.
-- `xstartup`: XFCE startup configuration.
+- `Dockerfile`: Sets up Ubuntu, MATE, noVNC, and Chrome.
+- `start.sh`: Entrypoint script to start Xvnc, MATE, and the noVNC proxy.
+- `xstartup`: MATE startup configuration.
 - `setup.sh`: Deployment script using `gcloud`.
 
 ## Requirements
