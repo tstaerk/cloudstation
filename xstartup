@@ -17,6 +17,7 @@ exec dbus-run-session -- bash -c '
     sleep 1
   done
   caja --no-default-window --force-desktop &
+  conky &
 
   wait "$session_pid"
 '
