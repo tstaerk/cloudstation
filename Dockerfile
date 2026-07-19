@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y \
     xfonts-75dpi \
     xfonts-100dpi \
     wget \
+    curl \
     conky-all \
     openssh-client \
     iputils-ping \
