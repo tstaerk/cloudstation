@@ -1,8 +1,16 @@
-# Run your graphical Linux Desktop in a browser
-This repository allows you to export a Linux container's graphical desktop environment to a browser. It contains a Dockerized noVNC environment running Ubuntu 24.04, MATE, and Google Chrome. It is designed to be deployed to Google Cloud Run.
+# CloudStation
+
+### Your Linux is just a URL away.
+
+Run a complete Ubuntu desktop in any modern browser.
+No installation. No virtual machine.
+Deploy it to Google Cloud Run in minutes.
 
 <img width="634" height="400" alt="Screenshot 2026-07-15 195012" src="https://github.com/user-attachments/assets/579fa1f4-3592-4ae1-b3bd-74ea89a310d1" />
 
+CloudStation turns a Linux container into a complete browser-accessible workstation.
+
+It combines Ubuntu 24.04, MATE, Google Chrome, TigerVNC and noVNC into a ready-to-deploy desktop that runs on Google Cloud Run.
 
 ## Quick Start
 1. In Google Cloud Console, open the Cloud Shell
